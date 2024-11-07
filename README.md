@@ -14,6 +14,8 @@ The **NIH ChestX-ray8 dataset** is used as the primary data source. This large-s
 - **Image resolution**: 1024x1024 in PNG format
 - **Bounding box annotations** for localization (~1,000 images)
 
+For the initial phase of this project, only a small percentage of the original dataset will be used (~5000) and can be found here: https://www.kaggle.com/datasets/nih-chest-xrays/sample?resource=download.
+
 ## Dataset Challenges
 1. **Multi-label classification**: Each image may be labeled with one or more diseases.
 2. **Class imbalance**: Some conditions are significantly underrepresented, which requires techniques like data augmentation and weighted loss functions to ensure balanced learning across all disease classes.
