@@ -1,4 +1,4 @@
-# Thoraic Disease Detection
+# Thoracic Disease Detection
 
 # 1. Project Overview
 Thoracic diseases, including pneumonia, emphysema, and fibrosis, are significant global health concerns and are often challenging to diagnose accurately. Chest X-rays serve as an accessible and common diagnostic tool, but interpreting these images requires expertise and is complex, even for trained radiologists.
