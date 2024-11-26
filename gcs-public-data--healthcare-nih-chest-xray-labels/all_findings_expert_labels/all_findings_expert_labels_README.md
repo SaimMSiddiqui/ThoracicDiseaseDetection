@@ -3,7 +3,8 @@
 This directory contains expert labels obtained as part of [*Scientific Reports* paper](https://arxiv.org/abs/2010.11375),
 
 
-The set of labels focuses on all 14 findings released in the [original dataset](https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community), and as a normal/abnormal label. The set of
+The set of labels focuses on all 14 findings released in the [original dataset](https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community), and as a normal/abnormal label. 
+The set of
 labels only contains images from the test set. These images are identical to the images included in the `Four
 Findings Expert Labels` test split, restricted to chest x-rays with PA view (810 images out of the 1,962 images).
 

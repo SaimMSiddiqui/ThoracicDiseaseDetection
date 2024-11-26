@@ -1,0 +1,16 @@
+Diagnosis counts:
+Atelectasis: 1391
+Cardiomegaly: 372
+Effusion: 1018
+Infiltration: 381
+Mass: 527
+Nodule: 686
+Pneumonia: 73
+Pneumothorax: 622
+Consolidation: 947
+Edema: 257
+Emphysema: 149
+Fibrosis: 165
+Pleural Thickening: 479
+Hernia: 30
+Other: 261
