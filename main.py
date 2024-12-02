@@ -1,7 +1,9 @@
+import math
 import os
+from src.data_utils import create_data_generator
 from src.preprocess import load_and_preprocess_labels
 from src.model import build_model
-from src.train import create_data_generator, train_model, compute_class_weights
+from src.train import train_model, compute_class_weights
 from src.evaluate import evaluate_model
 from src.utils import verify_paths
 from sklearn.model_selection import train_test_split
@@ -40,19 +42,22 @@ print(f"\nClass Weights: {class_weights}")
 # Train-validation split
 train_df, val_df = train_test_split(labels_df, test_size=0.2, random_state=42)
 
-# Calculate steps per epoch
-train_steps_per_epoch = len(train_df) // 32  # Number of training samples / batch size
-val_steps_per_epoch = len(val_df) // 32  # Number of validation samples / batch size
-print(f"\nTrain steps per epoch: {train_steps_per_epoch}")
+# Calculate steps per epoch dynamically
+train_steps_per_epoch = math.ceil(len(train_df) / 32)  # Batch size = 32
+val_steps_per_epoch = math.ceil(len(val_df) / 32)  # Batch size = 32
+
+# Print debug info to confirm correct steps
+print(f"Train steps per epoch: {train_steps_per_epoch}")
 print(f"Validation steps per epoch: {val_steps_per_epoch}")
 
-# Create data generators
+# Create data generators for training and evaluation
 train_gen = create_data_generator(
     dataframe=train_df,
     image_dir=image_dir,
     target_size=(224, 224),
     batch_size=32,
-    class_weights=class_weights
+    class_weights=class_weights,
+    shuffle=True  # Shuffle training data
 )
 
 val_gen = create_data_generator(
@@ -60,7 +65,8 @@ val_gen = create_data_generator(
     image_dir=image_dir,
     target_size=(224, 224),
     batch_size=32,
-    class_weights=class_weights
+    class_weights=None,  # No class weights for evaluation
+    shuffle=False  # Do not shuffle validation data
 )
 
 # Dynamically calculate the number of labels
@@ -92,6 +98,9 @@ os.makedirs(save_dir, exist_ok=True)
 model.save(os.path.join(save_dir, 'thoracic_disease_model.keras'))
 print("Model saved in TensorFlow SavedModel format.")
 
-# Evaluate the model on the validation set
+# Get the label names (excluding 'Image ID')
+label_names = labels_df.columns[1:].tolist()
+
+# Evaluate the model
 print("\n### Evaluating Model on Validation Set ###")
-evaluate_model(model, val_gen, steps=val_steps_per_epoch)
+evaluate_model(model, val_gen, steps=val_steps_per_epoch, label_names=label_names)

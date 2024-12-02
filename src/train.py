@@ -1,42 +1,17 @@
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.utils.class_weight import compute_class_weight
 import numpy as np
 
-def create_data_generator(dataframe, image_dir, target_size, batch_size, class_weights):
-    """
-    Creates a data generator for training/validation data and dynamically applies class weights to sample weights.
-    """
-    datagen = ImageDataGenerator(rescale=1.0 / 255.0)
-    base_generator = datagen.flow_from_dataframe(
-        dataframe=dataframe,
-        directory=image_dir,
-        x_col='Image ID',
-        y_col=dataframe.columns[1:].tolist(),
-        target_size=target_size,
-        batch_size=batch_size,
-        class_mode='raw',
-        shuffle=True  # Shuffle the data per epoch
-    )
-
-    # Add dynamic sample weights to the generator output
-    def generator_with_weights():
-        for images, labels in base_generator:
-            # Calculate sample weights based on class weights
-            sample_weights = np.zeros(labels.shape[0], dtype=np.float32)  # Initialize sample weights
-            for i in range(labels.shape[1]):  # Iterate over each label
-                sample_weights += labels[:, i] * class_weights[i]  # Add class weights for active labels
-            yield images, labels.astype('int64'), sample_weights
-
-    return generator_with_weights()
-
-
-
 def compute_class_weights(dataframe):
     """
     Computes class weights to address class imbalance.
+
+    Args:
+        dataframe (pd.DataFrame): DataFrame containing binary labels.
+
+    Returns:
+        dict: Class weights as a dictionary {class_index: weight}.
     """
-    # Flatten the labels to calculate class frequencies
     labels = dataframe.iloc[:, 1:].values  # Exclude 'Image ID'
     num_labels = labels.shape[1]
     class_weights = {}
@@ -48,20 +23,26 @@ def compute_class_weights(dataframe):
             classes=np.unique(label_column),
             y=label_column
         )
-        # Average weights for class 0 and 1
-        class_weights[i] = (weights[0] + weights[1]) / 2  # One weight per label
-
+        class_weights[i] = (weights[0] + weights[1]) / 2  # Average weight for class 0 and 1
     return class_weights
-
 
 def train_model(model, train_gen, val_gen, steps_per_epoch, validation_steps, epochs=20):
     """
     Trains the model using the provided generators.
+
+    Args:
+        model (keras.Model): Compiled model to train.
+        train_gen (generator): Training data generator.
+        val_gen (generator): Validation data generator.
+        steps_per_epoch (int): Number of training steps per epoch.
+        validation_steps (int): Number of validation steps per epoch.
+        epochs (int): Total number of epochs.
+
+    Returns:
+        History: Training history object.
     """
-    # Early stopping to prevent overfitting
     early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
-    # Train the model
     print("\n### Starting Model Training ###")
     history = model.fit(
         train_gen,
@@ -71,8 +52,4 @@ def train_model(model, train_gen, val_gen, steps_per_epoch, validation_steps, ep
         epochs=epochs,
         callbacks=[early_stopping]
     )
-
     return history
-
-
-

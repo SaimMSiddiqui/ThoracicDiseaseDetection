@@ -1,8 +1,12 @@
 import pandas as pd
-import numpy as np
 
 def load_and_preprocess_labels(csv_path):
     """
+    This function prepares image labels for machine learning by cleaning, standardizing,
+    and aggregating data from a CSV file. It ensures the labels are in a consistent format,
+    reducing potential sources of error in training. The resulting dataset is well-suited
+    for multi-label classification tasks, a common approach in medical imaging applications.
+
     Loads and preprocesses the labels from the CSV file.
     - Excludes specific labels that are difficult to predict.
     - Ensures all label columns are numeric.
@@ -13,13 +17,14 @@ def load_and_preprocess_labels(csv_path):
     # Load the CSV
     labels_df = pd.read_csv(csv_path)
 
-    # Select relevant columns (excluding specific labels)
-    labels_df = labels_df[['Image ID', 'Abnormal', 'Atelectasis', 'Cardiomegaly',
-                           'Effusion', 'Infiltration', 'Pleural Thickening', 'Consolidation']]
+    # Selected columns to train
+    labels_df = labels_df[['Image ID', 'Abnormal', 'Atelectasis', 'Nodule',
+                           'Effusion', 'Pleural Thickening', 'Consolidation',
+                           'Mass', 'Pneumothorax']]
 
     # Ensure all labels are cleaned and converted to binary
     def clean_label(value):
-        """Converts 'YES', 1 to 1 and 'NO', 0 to 0; handles unexpected values."""
+        #Converts 'YES' to 1 and 'NO' to 0; handles unexpected values.
         if value in ['YES', 1]:
             return 1
         elif value in ['NO', 0]:

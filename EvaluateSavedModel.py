@@ -27,6 +27,9 @@ print("\n### Loading and Preprocessing Labels ###")
 labels_df = load_and_preprocess_labels(csv_file_path)
 print(f"Data successfully loaded. Total records: {len(labels_df)}")
 
+# Extract label names for evaluation
+label_names = labels_df.columns[1:].tolist()
+
 # Step 2: Split into train and validation sets
 print("\n### Splitting Data ###")
 _, val_df = train_test_split(labels_df, test_size=0.2, random_state=42)
@@ -67,4 +70,5 @@ model = load_model(model_path)
 print("Model successfully loaded.")
 
 # Step 5: Evaluate the model
-evaluate_model(model, val_gen, steps=val_steps)
+print("\n### Evaluating Model ###")
+evaluate_model(model, val_gen, steps=val_steps, label_names=label_names)

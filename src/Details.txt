@@ -1,0 +1,55 @@
+____________________________________________________________________________________________________________
+                                     Hyper Parameters and adjustable values
+____________________________________________________________________________________________________________
+# Selected columns to train: Preprocess.py: Which Diseases are being included (~ >500 samples)
+# Patience for Early Stopping: Train.py: how long to wait before stopping on loss of improvement
+# Target_Size, batch_size: Main.py: Initializing create_data_generator()
+    # input_shape from build_model(): Main.py
+# Dropout rate: build_model(xx=)
+# Dense layer size: build_model(xx=)
+
+____________________________________________________________________________________________________________
+                                  Model Architecture and design basis
+____________________________________________________________________________________________________________
+The build_model function:
+    This model combines the power of transfer learning with advanced regularization techniques, making it efficient for multi-label classification tasks. The ResNet50 base model acts as a robust feature extractor, while the additional layers and loss function tailor the network for task-specific requirements. The design reflects a balance between leveraging pre-trained knowledge and adapting to new data for effective performance.
+
+Leveraging Transfer Learning with ResNet50
+    The model uses ResNet50, a pre-trained convolutional neural network (CNN), as its base. ResNet50 was trained on the large-scale ImageNet dataset and is well-suited for extracting high-level image features (patterns such as edges, textures, and objects). Instead of training the network from scratch:
+
+Freezing and Fine-Tuning Layers
+The top dense layers of ResNet50 are excluded (include_top=False), making it possible to add custom layers suited for the task. The function manages which layers in ResNet50 are trainable:
+    1 - Freezing: All layers in ResNet50 are frozen (not updated during training). This preserves the knowledge learned from ImageNet.
+    2 - Fine-tuning: The last trainable_layers of ResNet50 are unfrozen and updated. This allows the model to adjust to domain-specific patterns while retaining the general feature extraction abilities of the earlier layers.
+
+Adding Custom Layers:
+    Custom layers are added to perform task-specific classification:
+    GlobalAveragePooling2D: This layer reduces the spatial dimensions of feature maps to a single value per channel by averaging, summarizing information from the feature maps. This reduces the number of parameters, minimizing overfitting.
+    Dense Layer with Regularization: A fully connected layer (Dense) with ReLU activation (introduces non-linearity) and L2 regularization (discourages excessively large weights to prevent overfitting). The number of neurons is configurable (default: 128).
+    Dropout: A regularization technique where a fraction of the neurons (specified by dropout_rate) is randomly "dropped" during training. This reduces overfitting by encouraging the model to generalize better.
+    Output Layer: A dense layer with sigmoid activation, providing probabilities for each output label. The sigmoid function ensures independent probability estimates for multi-label classification.
+
+Compilation and Loss Function:
+    Adam Optimizer: An algorithm that adjusts the learning rate during training for efficient and stable convergence.
+    Binary Cross-Entropy Loss: A loss function suitable for multi-label classification, measuring the error between predicted probabilities and true labels for each class independently.
+    Accuracy Metric: Tracks the model’s performance during training and evaluation.
+____________________________________________________________________________________________________________
+                                     Data feed and Training
+____________________________________________________________________________________________________________
+Train.py is a pipeline for data preparation and model training.
+
+Preprocessed Images:
+    Images are normalized (pixel values scaled to [0, 1]).
+    Images are resized to a uniform size (224x224).
+Multi-Label Outputs:
+    The generator retrieves labels for multi-label classification tasks.
+Dynamic Sample Weights:
+    Addresses class imbalance by calculating sample weights based on class importance. This ensures that rare classes are not overshadowed during training.
+
+Data Generators: Provide small batches to be used for training to more efficiently process large dataset
+    A base generator (ImageDataGenerator.flow_from_dataframe) loads images and labels in batches.
+    A wrapper (generator_with_weights) computes and attaches sample weights to each batch dynamically.
+
+Early Stopping:
+    Monitors validation loss and stops training when performance stops improving for a set number of epochs (patience=5).
+    Restores the best-performing weights, preventing overfitting.
