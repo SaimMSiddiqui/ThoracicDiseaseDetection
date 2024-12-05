@@ -12,9 +12,9 @@ normal_vs_abnormal: distribution of normal and abnormal lung x-rays among the 81
 
 
 **cnn:**
-abnormal_vs_normal.csv: output of test examples (normal vs abnormal) using cnn2.py (in src folder)
+two_labels.csv: output of test examples (normal vs abnormal) using cnn2.py (in src folder)
 .png: plot of training loss & accuracy for multi-class classification (normal vs abnormal)
 
 multiple_labels.csv: output of test examples (actual vs predicted label) using cnn3.py
-.png: plot of training loss & accuracy for multi-label classification (all diseases)
+final_results.png: plot of training loss & accuracy for multi-label classification (all diseases)
 
