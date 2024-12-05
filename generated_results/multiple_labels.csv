@@ -1,0 +1,163 @@
+Image ID,True Label,Predicted Label
+00012012_007.png,Other,Normal
+00004526_013.png,Cardiomegaly,
+00023026_003.png,Normal,Normal
+00022726_010.png,"Mass, Nodule, Pneumothorax",Mass
+00003029_002.png,Nodule,Mass
+00006821_005.png,"Atelectasis, Pleural Thickening","Consolidation, Effusion"
+00008727_011.png,Cardiomegaly,Normal
+00021409_009.png,"Atelectasis, Consolidation, Effusion",Consolidation
+00012376_016.png,"Consolidation, Effusion, Mass, Nodule, Pleural Thickening","Consolidation, Effusion"
+00025416_001.png,Cardiomegaly,Normal
+00022961_005.png,"Atelectasis, Consolidation, Effusion",
+00018496_015.png,"Consolidation, Effusion","Consolidation, Effusion"
+00007569_009.png,Normal,
+00018366_048.png,"Atelectasis, Effusion, Pneumothorax","Atelectasis, Effusion, Pneumothorax"
+00029617_000.png,Normal,"Consolidation, Effusion"
+00004931_018.png,Normal,Normal
+00004461_003.png,Normal,
+00004822_048.png,Other,
+00001555_003.png,Consolidation,
+00030573_000.png,Normal,
+00002435_000.png,"Cardiomegaly, Edema",Consolidation
+00023075_012.png,Mass,
+00021381_034.png,"Effusion, Infiltration, Pleural Thickening, Pneumothorax",Consolidation
+00018865_038.png,"Atelectasis, Pleural Thickening, Pneumothorax","Atelectasis, Consolidation, Effusion"
+00027927_014.png,"Atelectasis, Cardiomegaly, Effusion",
+00029617_004.png,"Nodule, Pneumothorax",Consolidation
+00007471_005.png,Atelectasis,
+00014358_001.png,Mass,Normal
+00009368_016.png,"Atelectasis, Effusion, Hernia, Mass, Pleural Thickening","Consolidation, Effusion"
+00009437_008.png,"Atelectasis, Effusion",Effusion
+00013062_001.png,Cardiomegaly,Mass
+00008522_005.png,Normal,
+00029950_020.png,"Atelectasis, Infiltration, Pneumothorax",Effusion
+00013261_011.png,Normal,Normal
+00005986_012.png,Pneumothorax,"Effusion, Pneumothorax"
+00018860_031.png,"Atelectasis, Consolidation, Effusion, Pneumothorax","Atelectasis, Consolidation, Effusion"
+00016587_094.png,"Atelectasis, Effusion, Infiltration, Pneumothorax","Atelectasis, Consolidation, Effusion"
+00029560_000.png,Normal,Effusion
+00002868_005.png,"Atelectasis, Consolidation, Mass, Nodule",Mass
+00014607_000.png,Nodule,Normal
+00018921_064.png,"Atelectasis, Effusion, Fibrosis, Pleural Thickening","Atelectasis, Consolidation, Effusion, Pneumothorax"
+00013625_014.png,Normal,
+00004911_007.png,"Effusion, Mass",Effusion
+00022837_022.png,"Mass, Nodule, Pneumothorax","Atelectasis, Consolidation, Effusion"
+00010959_003.png,Normal,
+00019637_005.png,Nodule,
+00029202_001.png,Normal,
+00008727_005.png,Normal,Normal
+00004858_063.png,"Atelectasis, Cardiomegaly, Infiltration","Consolidation, Effusion"
+00014083_021.png,"Atelectasis, Effusion, Pneumothorax",Pneumothorax
+00025416_000.png,Other,
+00010568_005.png,"Atelectasis, Effusion","Atelectasis, Consolidation, Effusion"
+00024561_000.png,Effusion,Normal
+00001673_001.png,"Effusion, Nodule",
+00012741_000.png,Normal,Normal
+00019765_007.png,Other,"Consolidation, Effusion"
+00027278_003.png,"Atelectasis, Pneumothorax","Atelectasis, Consolidation, Effusion"
+00007498_001.png,Nodule,
+00013261_010.png,Other,Normal
+00005681_046.png,Nodule,
+00012298_009.png,Infiltration,Normal
+00000457_001.png,"Cardiomegaly, Effusion","Consolidation, Effusion"
+00014346_017.png,Normal,Normal
+00015732_011.png,Normal,
+00029803_000.png,Normal,
+00030666_000.png,Other,"Consolidation, Effusion"
+00017747_036.png,Edema,
+00005609_000.png,Other,
+00002176_011.png,Atelectasis,
+00000506_012.png,"Atelectasis, Effusion","Consolidation, Effusion"
+00015561_004.png,Normal,Normal
+00009683_000.png,Mass,"Consolidation, Mass"
+00021381_001.png,Nodule,
+00007886_013.png,"Atelectasis, Pneumothorax",
+00018657_015.png,Other,
+00021896_009.png,"Cardiomegaly, Pleural Thickening","Consolidation, Effusion"
+00017747_018.png,Consolidation,"Atelectasis, Consolidation"
+00004526_020.png,Cardiomegaly,Effusion
+00002509_002.png,"Atelectasis, Fibrosis, Nodule, Pleural Thickening","Consolidation, Effusion"
+00019892_017.png,"Consolidation, Effusion, Infiltration, Nodule",Effusion
+00028778_000.png,Normal,
+00008841_056.png,"Atelectasis, Effusion, Pneumothorax","Atelectasis, Consolidation, Effusion"
+00028993_000.png,Normal,
+00029112_000.png,Normal,
+00010103_011.png,"Atelectasis, Effusion, Pleural Thickening",Consolidation
+00014716_000.png,Normal,
+00028317_015.png,Effusion,
+00022899_012.png,"Atelectasis, Consolidation, Effusion, Infiltration","Consolidation, Effusion"
+00029338_000.png,Nodule,
+00010481_005.png,Normal,Normal
+00014004_002.png,Nodule,Normal
+00028425_001.png,Normal,
+00015386_013.png,"Consolidation, Effusion","Atelectasis, Consolidation, Effusion"
+00003148_009.png,Normal,Normal
+00027028_018.png,"Atelectasis, Effusion",
+00021972_028.png,"Atelectasis, Effusion, Nodule",Effusion
+00004533_000.png,"Cardiomegaly, Edema",
+00012376_017.png,"Consolidation, Effusion, Mass, Nodule",Consolidation
+00015442_025.png,Other,Normal
+00017747_040.png,"Atelectasis, Consolidation, Infiltration","Atelectasis, Consolidation"
+00005360_004.png,"Atelectasis, Fibrosis, Pleural Thickening",
+00010103_010.png,"Atelectasis, Effusion, Pleural Thickening","Consolidation, Effusion"
+00014294_014.png,Normal,
+00029808_008.png,"Atelectasis, Consolidation, Effusion",Effusion
+00030260_007.png,"Consolidation, Effusion","Consolidation, Effusion"
+00000211_028.png,Cardiomegaly,Effusion
+00028572_000.png,Other,
+00026098_016.png,"Atelectasis, Consolidation, Effusion","Atelectasis, Consolidation, Effusion"
+00013111_114.png,"Atelectasis, Nodule","Consolidation, Mass"
+00017318_006.png,"Edema, Infiltration",
+00016429_002.png,"Atelectasis, Effusion, Nodule, Pleural Thickening, Pneumothorax","Consolidation, Effusion"
+00028343_000.png,Normal,
+00029610_002.png,Normal,
+00021409_003.png,"Atelectasis, Effusion, Mass","Atelectasis, Consolidation, Effusion"
+00015843_012.png,Atelectasis,
+00029227_000.png,Normal,
+00016417_005.png,"Atelectasis, Effusion",Effusion
+00019265_010.png,"Atelectasis, Cardiomegaly",Consolidation
+00017137_010.png,"Atelectasis, Effusion, Pneumothorax",Effusion
+00023325_013.png,"Atelectasis, Cardiomegaly","Atelectasis, Consolidation, Effusion"
+00023065_024.png,"Atelectasis, Effusion, Pleural Thickening, Pneumothorax","Consolidation, Effusion"
+00017511_005.png,"Atelectasis, Cardiomegaly",
+00030192_000.png,Normal,Effusion
+00003669_005.png,"Atelectasis, Effusion",Effusion
+00029659_000.png,Normal,Normal
+00008399_003.png,Mass,
+00018721_015.png,Atelectasis,"Consolidation, Effusion"
+00011953_005.png,"Atelectasis, Consolidation, Pleural Thickening","Consolidation, Effusion, Pneumothorax"
+00005089_015.png,"Atelectasis, Effusion","Consolidation, Effusion"
+00015442_026.png,Normal,Normal
+00016568_052.png,"Atelectasis, Mass","Atelectasis, Consolidation, Effusion"
+00016522_003.png,"Atelectasis, Consolidation, Effusion, Pleural Thickening",Effusion
+00002758_000.png,"Atelectasis, Effusion",
+00000830_005.png,"Atelectasis, Cardiomegaly, Effusion",
+00021711_009.png,"Atelectasis, Pneumothorax","Atelectasis, Consolidation"
+00023068_001.png,Nodule,
+00028027_002.png,Mass,Effusion
+00021070_000.png,Nodule,Normal
+00014525_022.png,Other,Normal
+00029386_000.png,Normal,Effusion
+00004822_024.png,"Cardiomegaly, Pleural Thickening",Consolidation
+00010481_011.png,Normal,Normal
+00016191_021.png,"Atelectasis, Effusion, Nodule","Consolidation, Effusion"
+00021381_008.png,"Atelectasis, Effusion, Pleural Thickening, Pneumothorax",Consolidation
+00004188_014.png,Other,
+00014525_017.png,Normal,Normal
+00030719_000.png,Nodule,
+00001534_009.png,Normal,
+00003528_066.png,Normal,Normal
+00019150_014.png,Normal,Normal
+00018615_010.png,Normal,Normal
+00030664_000.png,Normal,
+00010967_003.png,Mass,
+00018366_013.png,"Effusion, Nodule","Effusion, Mass"
+00000583_066.png,"Atelectasis, Consolidation, Effusion",Consolidation
+00005532_013.png,"Cardiomegaly, Consolidation",
+00015502_005.png,Atelectasis,Normal
+00029915_000.png,Normal,Normal
+00012156_001.png,Nodule,Normal
+00009608_010.png,"Atelectasis, Cardiomegaly, Consolidation, Infiltration, Pleural Thickening","Atelectasis, Consolidation, Effusion"
+00026562_021.png,"Consolidation, Effusion",Effusion
+00016009_012.png,"Mass, Pneumothorax",Mass
