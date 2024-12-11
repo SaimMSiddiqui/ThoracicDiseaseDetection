@@ -1,0 +1,12 @@
+https://www.ibm.com/topics/convolutional-neural-networks
+
+Brownlee, J. (2020, August 30). Multi-Label Classification with Deep Learning. Machine Learning Mastery. https://machinelearningmastery.com/multi-label-classification-with-deep-learning/
+Chollet, F. (n.d.). Probabilistic losses. Keras. https://keras.io/api/losses/probabilistic_losses/
+Image Recognition with Mobilenet. (2021, July 18). GeeksforGeeks. https://www.geeksforgeeks.org/image-recognition-with-mobilenet/
+Image classification using Support Vector Machine (SVM) in Python. (2024, 21, May). GeeksforGeeks.  https://www.geeksforgeeks.org/image-classification-using-support-vector-machine-svm-in-python/
+Is there a way to use multilabel classification but take as correct when the model predicts only one label in keras? (2020, July 12).  Stack Overflow. https://stackoverflow.com/questions/62866396/is-there-a-way-to-use-multilabel-classification-but-take-as-correct-when-the-mod
+MobileNet Image Classification with TensorFlow’s Keras API. (n.d.). Deeplizard.com. Retrieved June 2, 2022, from https://deeplizard.com/learn/video/OO4HD-1wRN8
+Thakur, A. (2020, August 11). Sigmoid-MSE vs. Softmax Cross-Entropy. W&B. https://wandb.ai/ayush-thakur/dl-question-bank/reports/Sigmoid-MSE-vs-Softmax-Cross-Entropy--VmlldzoyMDA3ODQ
+Wang, X., Peng, Y., Lu, L., Lu, Z., Bagheri, M., & Summers, R. M. (2017). ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases. Proceedings of the 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 3462-3471.
+
+

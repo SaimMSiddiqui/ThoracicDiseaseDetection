@@ -78,23 +78,34 @@ and in more difficult-to-identify cases.
 
 This project aims to build a computer-aided diagnostic (CAD) tool capable of diagnosing thoracic
 diseases from chest X-ray images, assisting clinicians by automating the detection of common thoracic
-diseases. This has been implemented using Support Vector Machines (SVM) and Convoluted Neural Networks
+diseases. This has been implemented using Support Vector Machines (SVM) and Convolutional Neural Networks
 (CNN) in the form of ResNet50 and MobileNet. The efficacy of all are tested.
 
 \section{Data}
-\textbf{TODO: Describe the data used for experiments and report data statistics as well as interesting
-observations or patterns in the data.}
-
 The data for this project has been obtained from the NIH ChestX-ray8 dataset, an open-source,
 hospital-scale collection of medical images, which will be essential for developing a CAD system.
 The original NIH ChestX-ray8 dataset contains 108,948 images from 32,717 patients, however, the
 labels are frequently incorrect and misdiagnoses.
 A subset of 810 images was chosen based on the evaluation of radiologists themselves. The 810 image
-subset is the only commonly known verified chest x-ray dataset. 
+subset is the only commonly known verified chest x-ray dataset. Each image is high-resolution
+(1024x1024 px) and in PNG format.
 
-The data can be classified into 14 different labels, with the capability of multi-label classification.
+Figure \ref{fig:examplexray} shows an example X-ray from the dataset, with the diagnoses of
+Atelectasis, Effusion, and Pneumothorax. As shown, each individual x-ray can have multiple labels
+associated with it, which further complicates the model.
+
+%%% EXAMPLE X-RAY IMAGE %%%
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.5]{00018366_048}
+    \caption{00018366\_048.png, an example X-ray from the dataset with the diseases Atelectasis,
+    Effusion, and Pneumothorax.}
+    \label{fig:examplexray}
+\end{figure}
+
+The data can be classified into 15 different labels, with the capability of multi-label classification.
 The "None" label is also a possibility, but only occurs in the absence of any diseases and cannot be
-combined with any other label. The 14 possible abnormal labels are: 
+combined with any other label. The 15 possible abnormal labels are: 
 \begin{itemize}
     \item Hernia,
     \item Pleural Thickening,
@@ -109,11 +120,12 @@ combined with any other label. The 14 possible abnormal labels are:
     \item Infiltration,
     \item Effusion,
     \item Cardiomegaly,
+    \item Atelectasis,
     \item and Other.
 \end{itemize}
 
 In Figure \ref{fig:normalvabnormal}, the dataset's distribution of normal and abnormal x-rays is shown,
-where abnormal is any image with at least one of the 14 aforementioned labels, and where
+where abnormal is any image with at least one of the 15 aforementioned labels, and where
 normal is any image with the "None" label. The abnormal category outnumbers the normal category quite
 a bit, which may contribute to the class imbalance.
 
@@ -126,7 +138,7 @@ a bit, which may contribute to the class imbalance.
 \end{figure}
 
 As shown in Figure \ref{fig:datasetdistribution}, there is a very clear class imbalance, with "None"
-and "Effusion" occuring the most and "Pneumonia" and "Hernia" occuring the least. 
+and "Atelectasis" occuring the most and "Pneumonia" and "Hernia" occuring the least. 
 
 %%% DATASET DISTRIBUTION FIGURE -- wide image, so must appear across both columns %%%
 \begin{figure*}[!h]
@@ -140,6 +152,27 @@ and "Effusion" occuring the most and "Pneumonia" and "Hernia" occuring the least
 \section{Methods}
 \textbf{TODO: Provide a detailed description of your method and explain why the method is a good fit for
 the problem.}
+
+Three separate models were used in order to accomplish this project. The first was a Support Vector
+Machine (SVM) model whereas the other two relied on Convolutional Neural Networks (CNN) in the form
+of ResNet50 and MobileNet. The data was split into a 60\% training, 20\% testing, and 20\% validation
+separation.
+
+\subsection{Support Vector Machine}
+Support Vector Machine or SVM is a supervised machine learning model used to separate classes based
+on their ability to be separated linearly. The class instances are graphed and ideally separated
+into clusters. SVM models take this data and create a linear separator that creates the maximum
+margin between clusters. In the case where a linear separator is not successful, the model can employ
+the kernel trick, which adds higher dimensions in order to create a substantial margin between classes.
+
+\subsection{Convolutional Neural Networks}
+Convolutional Neural Networks or CNN are a type of neural network that are designed to process images.
+Neural networks are machine learning models that use artificial neurons, or nodes, to process data.
+Each node takes in the weights of each feature, computes the sum, and runs it through an activation
+function. The activation function can be any function, such as ReLu or the sigmoid function. 
+
+CNNs differ from neural networks by containing a convolutional layer, which takes in input data,
+a filter, and a feature map.
 
 \section{Results}
 \textbf{TODO: Briefly describe the evaluation approach and metrics. Report performance metrics for the method(s) through Figures or Tables.
