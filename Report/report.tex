@@ -65,8 +65,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
-    \textbf{TODO: Write a concise summary of the project and the conclusions of the work. It should be no longer
-    than one short paragraph (e.g. 200 words).}
+
+This project explores how machine learning can be used in medical imaging to diagnose thoracic
+diseases such as pneumonia, emphysema, and fibrosis. It utilizes a curated subset of 810
+high-quality, radiologist-verified chest X-ray images from the NIH ChestX-ray8 dataset in which
+three models were developed to attempt to diagnose patients. The models that were used were a Support
+Vector Machine and two Convolutional Neural Networks, ResNet50 and MobileNet. The SVM achieved
+moderate accuracy but was limited by computational expense. ResNet50 demonstrated high recall,
+identifying many true positives but over-predicted diseases, while MobileNet achieved 89\% binary
+accuracy and was the best model. The results show the great potential of machine learning in the
+medical field, especially in diagnostics offering tools to assist clinicians and improve patient
+outcomes.
+
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -305,6 +315,7 @@ As expected, the model more accurately predicted diseases that appeared more oft
 %%% PRECISION, RECALL, F1 SCORES, AND SUPPORT OF RESNET50 %%%
 \begin{table}[!h]
     \centering
+    \resizebox{\columnwidth}{!}{
     \begin{tabular}{ c  c  c  c  c }
         \hline
         \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support}\\
@@ -315,10 +326,11 @@ As expected, the model more accurately predicted diseases that appeared more oft
         Effusion & 0.43 & 1.00 & 0.60 & 69 \\
         Mass & 0.75 & 0.09 & 0.16 & 34 \\
         Nodule & 0.34 & 1.00 & 0.51 & 55 \\
-        PT & 0.42 & 0.91 & 0.58 & 68 \\
+        Pleural Thickening & 0.42 & 0.91 & 0.58 & 68 \\
         Pneumothorax & 0.33 & 0.76 & 0.46 & 37 \\
         \hline
     \end{tabular}
+    }
     \caption{The precision, recall, F1-scores, and support of the ResNet50 model, where support is
     the number of examples/diseases in the set.}
     \label{table:resnet50accuracy}
@@ -347,6 +359,7 @@ issue, which is likely due to the class imbalance.
 %%% PRECISION, RECALL, F1 SCORES, AND SUPPORT OF MOBILENET %%%
 \begin{table}[!h]
     \centering
+    \resizebox{\columnwidth}{!}{
     \begin{tabular}{ c  c  c  c  c }
         \hline
         \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support}\\
@@ -364,11 +377,12 @@ issue, which is likely due to the class imbalance.
         Nodule & 0.50 & 0.04 & 0.07 & 26 \\
         Normal & 0.57 & 0.41 & 0.48 & 41 \\
         Other & 0.00 & 0.00 & 0.00 & 12 \\
-        PT & 0.00 & 0.00 & 0.00 & 18 \\
+        Pleural Thickening & 0.00 & 0.00 & 0.00 & 18 \\
         Pneumonia & 0.00 & 0.00 & 0.00 & 0 \\
         Pneumothorax & 1.00 & 0.05 & 0.10 & 20 \\
         \hline
     \end{tabular}
+    }
     \caption{The precision, recall, F1-scores and support of the MobileNet model, where support is
     the number of examples/diseases in the set.}
     \label{table:mobilenetaccuracy}
@@ -400,19 +414,47 @@ in order to have it succeed with this dataset.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion}
-\textbf{TODO: In one short paragraph concisely summarize the main points and insights of the project,
-describe potential directions to extend your project, and describe limitations of your project.}
+This project demonstrates the potential of machine learning in the medical field, particularly for
+diagnosing thoracic disease using patient X-rays. Three models were evaluated by utilizing
+X-ray images from the NIH ChestX-ray8 dataset. Starting with an SVM the model was great at
+identifying Abnormal cases while it struggled more with Normal cases. This was due to the large
+imbalance in data therefore there were few examples that the model could learn from. The SVM
+model was also computationally expensive and therefore could not be used for multi-label
+classification. However, the CNNs that were developed had better results with the multi-label
+classification. ResNet50 demonstrated high recall, identifying many true positives however it
+over-predicted diseases leading to overfitting. Finally, the MobileNet was the other CNN that
+was utilized and it had the best results, especially with the multi-label classification. MobileNet
+achieved an 89\% binary accuracy and was computationally efficient and versatile. For future
+implications on this issue, improving data imbalance through oversampling as well as
+implementing self-training to obtain more examples could enhance the model’s ability to
+generalize and accurately classify diseases.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONTRIBUTION CHART
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
-\section{Contribution Chart}
-\textbf{TODO: Complete the following Table to clearly report the contributions that each team
-member made to the final project. (Task/Subtask, Student ID, Commentary on Contribution)}
 
-\begin{table*}[!h]
+
+\nocite{jbrownlee}
+\nocite{fchollet}
+\nocite{mobilenet}
+\nocite{svm}
+\nocite{tensorflow}
+\nocite{athakur}
+\nocite{chestx-ray}
+\nocite{cnn}
+
+\bibliography{report}
+\bibliographystyle{icml2024}
+
+\clearpage
+\twocolumn[
+\section{Contribution Chart}
+Contribution chart listing all group member's contributions.
+\newline
+]
+
+\begin{table}
     \centering
     \begin{tabular}{| c | c | c | c |}
         \hline
@@ -434,6 +476,6 @@ member made to the final project. (Task/Subtask, Student ID, Commentary on Contr
         & & & slides and proposal editing. \\
         \hline
     \end{tabular}
-\end{table*}
-%%% TO DO: ADD BIBLIOGRAPHY AND RESOURCES %%%
+\end{table}
+
 \end{document}
