@@ -8,6 +8,7 @@
 \usepackage{subcaption}
 \usepackage{caption}
 \usepackage{booktabs}
+\usepackage{flushend}
 \usepackage[%  
     colorlinks=true,
     pdfborder={0 0 0},
@@ -54,7 +55,7 @@
 \icmlauthor{Meriem Elkoudi (02015993),}{}
 \icmlauthor{Chris Peters (01989716),}{}
 \icmlauthor{Saim Siddiqui (02018510),}{}
-\icmlauthor{and Amitha Thalanki (02077527)}{}
+\icmlauthor{Amitha Thalanki (02077527)}{}
 \end{icmlauthorlist}
 
 \vskip 0.3in
@@ -104,10 +105,10 @@ diseases. This has been implemented using Support Vector Machines (SVM) and Conv
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Data}
-The data for this project has been obtained from the NIH ChestX-ray8 dataset, an open-source,
+The data for this project was obtained from the NIH ChestX-ray8 dataset, an open-source,
 hospital-scale collection of medical images, which will be essential for developing a CAD system.
-The original NIH ChestX-ray8 dataset contains 108,948 images from 32,717 patients, however, the
-labels are frequently incorrect and misdiagnoses.
+The original NIH ChestX-ray8 dataset contains 108,948 images from 32,717 patients. However, the
+labels are frequently incorrect and misdiagnoses are common.
 A subset of 810 images was chosen based on the evaluation of radiologists themselves. The 810 image
 subset is the only commonly known verified chest X-ray dataset. Each image is high-resolution
 (1024x1024 px) and in PNG format.
@@ -130,7 +131,7 @@ The "None" label is also a possibility, but only occurs in the absence of any di
 combined with any other label. The 15 possible abnormal labels are: 
 \begin{itemize}
     \item Hernia,
-    \item Pleural Thickening (PT),
+    \item Pleural Thickening,
     \item Fibrosis,
     \item Emphysema,
     \item Edema,
@@ -148,8 +149,8 @@ combined with any other label. The 15 possible abnormal labels are:
 
 In Figure \ref{fig:normalvabnormal}, the dataset's distribution of normal and abnormal X-rays is shown,
 where abnormal is any image with at least one of the 15 aforementioned labels, and where
-normal is any image with the "None" label. The abnormal category outnumbers the normal category quite
-a bit, which may contribute to the class imbalance.
+normal is any image with the "None" label. The abnormal category largely outnumbers the normal category,
+which may contribute to the class imbalance.
 
 %%% NORMAL VS ABNORMAL FIGURE %%%
 \begin{figure}[!h]
@@ -194,8 +195,8 @@ effective for image classification tasks.
 
 The SVM model used specifically classified between Normal and Abnormal classes. The images were first
 resized to a fixed shape and flattened into a 1D array. These resized images, along with their labels,
-were converted into a Pandas dataframe, and then split into the previously mentioned 60:20:20 split.
-The base of the SVM model was taken from the sklearn library in Python, with GridSearchCV for
+were converted into a \texttt{Pandas} dataframe, and then split into the previously mentioned 60:20:20 split.
+The base of the SVM model was taken from the \texttt{sklearn} library in Python, with \texttt{GridSearchCV} for
 hyperparameter optimization (C, gamma, kernel).
 
 \subsection{Convolutional Neural Networks}
@@ -207,7 +208,7 @@ function. The activation function can be any function, such as ReLU or the sigmo
 
 CNNs differ from neural networks by containing a convolutional layer, which takes in input data,
 a filter, and a feature map. The convolutional layer takes a group of pixels and applies the filter
-to them, boiling them down to a single value. This allows for the given images to reduce in size and
+to them, boiling them down to a single value. This allows for the given images to be reduced in size and
 promotes better feature selection. 
 
 \subsubsection{ResNet50}
@@ -234,7 +235,7 @@ classes and the multi-label classification were tested.
 Again, similarly to ResNet50, the MobileNet model used in this project had top layers that used ReLU
 activation, L2 regularization, and global average pooling. The output layer used sigmoid activation
 for multi-label predictions. It was also trained with the Adam optimizer with applied image
-augmentation (rotation, shift, zoom, flip, etc.) using ImageDataGenerator. The loss function was also
+augmentation (rotation, shift, zoom, flip, etc.) using \texttt{ImageDataGenerator}. The loss function was also
 binary cross-entropy loss.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -256,7 +257,7 @@ classes as it was computationally very expensive. Training the model took a subs
 time, even with only two classes, likely due to the fact that SVM is not necessarily designed to
 process images, unlike the other two models.
 
-Using the sklearn accuracy\_score() metric, the accuracy of the model without any normalization was
+Using the \texttt{sklearn accuracy\_score()} metric, the accuracy of the model without any normalization was
 approximately 75\% [Fig \ref{fig:confusionmatrix1}].
 
 %%% CONFUSION MATRIX WITHOUT NORMALIZATION %%%
@@ -402,11 +403,11 @@ should be increasing overtime.
 \end{figure}
 
 Unsurprisingly, the pattern of each model struggling with classifying less frequently seen classes
-continues in MobileNet. While the calculated accuracy was certainly quite good, the model just
+continues in MobileNet. While the calculated accuracy was certainly quite good, the model
 ignored the labels with less support and did not assign that label to any images, effectively always
-getting it wrong, which explains the 0.00 precision, recall, and F1-score of a large chunk of the data.
+misclassifying, which explains the 0.00 precision, recall, and F1-score of a large portion of the data.
 
-Overall, this model did perform better than the other two, but there is still much more work to do
+Overall, this model did perform better than the other CNN and SVM models, but there is still much more work to do
 in order to have it succeed with this dataset.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -415,18 +416,18 @@ in order to have it succeed with this dataset.
 
 \section{Conclusion}
 This project demonstrates the potential of machine learning in the medical field, particularly for
-diagnosing thoracic disease using patient X-rays. Three models were evaluated by utilizing
-X-ray images from the NIH ChestX-ray8 dataset. Starting with an SVM the model was great at
-identifying Abnormal cases while it struggled more with Normal cases. This was due to the large
-imbalance in data therefore there were few examples that the model could learn from. The SVM
-model was also computationally expensive and therefore could not be used for multi-label
+diagnosing thoracic disease using patient X-rays. Three models were evaluated by utilizing a subset of
+X-ray images from the NIH ChestX-ray8 dataset. The SVM model was great at
+identifying Abnormal cases, but it struggled more with Normal cases. This was due to the large
+imbalance in data, therefore there were few examples that the model could learn from. The SVM
+model was also computationally expensive and as such, could not be used for multi-label
 classification. However, the CNNs that were developed had better results with the multi-label
 classification. ResNet50 demonstrated high recall, identifying many true positives however it
-over-predicted diseases leading to overfitting. Finally, the MobileNet was the other CNN that
-was utilized and it had the best results, especially with the multi-label classification. MobileNet
+over-predicted diseases, leading to overfitting. Finally, MobileNet, a different CNN model was used,
+producing the best results, especially with the multi-label classification. MobileNet
 achieved an 89\% binary accuracy and was computationally efficient and versatile. For future
 implications on this issue, improving data imbalance through oversampling as well as
-implementing self-training to obtain more examples could enhance the model’s ability to
+implementing self-training to obtain more examples could enhance the model's ability to
 generalize and accurately classify diseases.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -444,8 +445,8 @@ generalize and accurately classify diseases.
 \nocite{chestx-ray}
 \nocite{cnn}
 
-\bibliography{report}
 \bibliographystyle{icml2024}
+\bibliography{report}
 
 \clearpage
 \twocolumn[
@@ -465,11 +466,18 @@ Contribution chart listing all group member's contributions.
         & & & regarding those models) and came up with questions to pose \\
         & & & about the models overall. \\
         \hline
-        Meriem & 02015993 & & \\
+        Meriem & 02015993 & Potential Model and Report & Researched and planned to develop \\
+        & & & 3rd CNN model. Also, contributed on presentation slides and report. \\
         \hline
-        Chris & 01989716 & & \\
+        Chris & 01989716 & CNN & Built and tested CNN model, built some preprocessing tools \\
+        & & & to get images out of the dataset that were labeled.\\
         \hline
-        Saim & 02018510 & & \\
+        Saim & 02018510 & GitHub and Presentation & I contributed by setting up and organizing the GitHub repository to  \\
+        & & & streamline collaboration and version control, as well as providing \\
+        & & & information within the README and other files. \\
+        & & & I also formatted the slideshow presentation, ensuring clarity within\\
+        & & & the information provided. Additionally, I helped develop questions to \\
+        & & & evaluate our model and dataset, allowing for deeper analysis and discussion. \\
         \hline
         Amitha & 02077527 & Research and Report & Created and wrote report. Conducted further research on \\ 
         & & & models and specifications to complete report. Also, contributed to \\
