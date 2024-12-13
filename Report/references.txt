@@ -1,4 +1,6 @@
 https://www.ibm.com/topics/convolutional-neural-networks
+https://wandb.ai/mostafaibrahim17/ml-articles/reports/The-Basics-of-ResNet50---Vmlldzo2NDkwNDE2#what-is-resnet50?
+
 
 Brownlee, J. (2020, August 30). Multi-Label Classification with Deep Learning. Machine Learning Mastery. https://machinelearningmastery.com/multi-label-classification-with-deep-learning/
 Chollet, F. (n.d.). Probabilistic losses. Keras. https://keras.io/api/losses/probabilistic_losses/
